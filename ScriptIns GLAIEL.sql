@@ -16,6 +16,18 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Inserción manual de paises
+--
+LOCK TABLES country WRITE;
+INSERT INTO library.country (
+	id,
+    name,
+    code)
+VALUES (1,'Argentina','AR'),(2,'Uruguay','UY'),(3,'Chile','CL'),(4,'Brasil','BR'),(5,'Peru','PE'),(6,'Colombia','CO'),(7,'Mexico','MX');
+UNLOCK TABLES;
+select * from library.country;
+
+--
 -- Table structure for table `career_subject`
 --
 
@@ -82,10 +94,10 @@ UNLOCK TABLES;
 -- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
+DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `categories` (
+CREATE TABLE `category` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -95,13 +107,13 @@ CREATE TABLE `categories` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `categories`
+-- Dumping data for table `category`
 --
 
-LOCK TABLES `categories` WRITE;
-/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'Apunte','2016-06-09 05:53:29','2016-06-09 05:53:29'),(2,'Resumen','2016-06-09 05:53:29','2016-06-09 05:53:29'),(3,'Modelo de Examen','2016-06-09 05:53:29','2016-06-09 05:53:29'),(4,'Filminas','2016-06-09 05:53:29','2016-06-09 05:53:29'),(5,'Trabajo Practico','2016-06-09 05:53:29','2016-06-09 05:53:29');
-/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES (1,'Apunte','2016-06-09 05:53:29','2016-06-09 05:53:29'),(2,'Resumen','2016-06-09 05:53:29','2016-06-09 05:53:29'),(3,'Modelo de Examen','2016-06-09 05:53:29','2016-06-09 05:53:29'),(4,'Filminas','2016-06-09 05:53:29','2016-06-09 05:53:29'),(5,'Trabajo Practico','2016-06-09 05:53:29','2016-06-09 05:53:29');
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -145,10 +157,10 @@ UNLOCK TABLES;
 -- Table structure for table `schools`
 --
 
-DROP TABLE IF EXISTS `schools`;
+DROP TABLE IF EXISTS `school`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `schools` (
+CREATE TABLE `school` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
   `short_name` varchar(10) DEFAULT NULL,
@@ -158,7 +170,7 @@ CREATE TABLE `schools` (
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `university_id` (`university_id`),
-  CONSTRAINT `schools_ibfk_1` FOREIGN KEY (`university_id`) REFERENCES `universities` (`id`)
+  CONSTRAINT `school_ibfk_1` FOREIGN KEY (`university_id`) REFERENCES `university` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -166,10 +178,10 @@ CREATE TABLE `schools` (
 -- Dumping data for table `schools`
 --
 
-LOCK TABLES `schools` WRITE;
-/*!40000 ALTER TABLE `schools` DISABLE KEYS */;
-INSERT INTO `schools` VALUES (1,'Facultad de Derecho','FDD/UNC',1,'2017-05-03 14:33:47','2019-10-17 19:28:01',NULL),(2,'Facultad de Psicologia','Psic',1,'2017-05-03 14:33:47','2019-10-17 19:28:01',NULL),(3,'Facutad de Ciencias Economicas','Cs Ec',1,'2017-05-03 14:34:06','2019-10-17 19:28:01',NULL),(4,'Facultad de Derecho','FDD/US21',2,'2017-05-31 14:25:50','2019-10-17 19:28:01',NULL),(5,'Facultad de Derecho','FDD/UBP',3,'2017-07-16 20:40:04','2019-10-17 19:28:01',NULL),(6,'Facultad de Derecho','FDD/UCC',4,'2017-07-26 16:08:21','2019-10-17 19:28:01',NULL),(7,'Facultad de Ciencias Economicas','FCE/UES21',2,'2017-08-01 01:59:09','2019-10-17 19:28:01',NULL),(11,'Facultad de Ciencias Medicas','FCM - UNC',1,'2018-04-06 14:40:31','2019-10-17 19:28:01',NULL),(18,'Facultad de Ciencias de la Comunicacion','FCC',1,'2018-08-06 20:05:51','2019-10-17 19:28:01',NULL),(19,'Facultad de Ciencias Sociales','FdSC',1,'2018-08-06 20:06:55','2019-10-17 19:28:01',NULL),(20,'Facultad de Arquitectura','Faudi',1,'2018-08-06 20:07:17','2019-10-17 19:28:01',NULL),(21,'Facultad de Ciencias Exactas, Fisicas y Naturales','FCEFyN',1,'2018-08-06 20:08:34','2019-10-17 19:28:01',NULL),(22,'Facultad de Ciencias Agropecuarias','fca',1,'2018-08-06 20:09:13','2019-10-17 19:28:01',NULL),(23,'Facultad de Lenguas','FDL',1,'2018-08-06 20:09:37','2019-10-17 19:28:01',NULL),(24,'Facultad de Ciencias Economicas UCC','FCE',4,'2018-08-06 20:10:11','2019-10-17 19:28:01',NULL),(25,'Facultad de Arquitectura','FAUDI',4,'2018-08-06 20:18:15','2019-10-17 19:28:01',NULL),(26,'Facultad de Ciencias Medicas','FCM',4,'2018-08-06 20:19:10','2019-10-17 19:28:01',NULL),(27,'Facultad de Ciencias Agropecuarias','FCA',4,'2018-08-06 20:19:36','2019-10-17 19:28:01',NULL),(28,'Facultad de Psicologia','FDP',4,'2018-08-06 20:21:01','2019-10-17 19:28:01',NULL),(29,'Facultad de Psicologia','FDP',2,'2018-08-06 20:21:25','2019-10-17 19:28:01',NULL),(30,'facultad de ciencias economicas','FCE',3,'2018-08-06 20:22:24','2019-10-17 19:28:01',NULL),(31,'Facultad de Arquitectura','FdA',3,'2018-08-06 20:22:47','2019-10-17 19:28:01',NULL),(35,'Facultad de Turismo','FDT',3,'2019-03-14 16:00:20','2019-10-17 19:28:01',NULL),(39,'Ciencias Ambientales','CA',2,'2019-05-09 09:54:50','2019-10-17 19:28:01',NULL),(47,'Facultad de Arquitectura, DiseÃ±o y Urbanismo','FADU',1,'2019-07-15 15:45:07','2019-10-17 19:28:01',NULL),(56,'Facultad de Ciencias de la Administracion','FCA - IUA',14,'2019-09-05 16:12:04','2019-10-17 19:28:01',NULL),(70,'Facultad de Matematica, Astronomia, Fisica y Computacion','FAMAF',1,'2019-12-12 16:39:30','2019-12-12 16:39:30',NULL),(74,'Facultad de Ciencias Quimicas','FCQ',1,'2019-12-27 13:08:52','2019-12-27 13:08:52',NULL),(119,'Facultad de Derecho','FDD/IUA',14,'2021-06-08 14:46:23','2021-06-08 14:46:23',NULL),(120,'Facultad de Derecho','FDD/IUA',14,'2021-06-08 14:46:24','2021-06-08 14:46:24',NULL),(122,'Instituto Universitario de Ciencias Biomedicas de Cordoba','IUCBC',42,'2021-07-22 17:13:19','2021-07-22 17:13:19',NULL),(124,'Escuela de Tecnologia Medica','FCM - UNC',1,'2022-02-16 11:26:49','2022-02-16 11:26:49',NULL);
-/*!40000 ALTER TABLE `schools` ENABLE KEYS */;
+LOCK TABLES `school` WRITE;
+/*!40000 ALTER TABLE `school` DISABLE KEYS */;
+INSERT INTO `school` VALUES (1,'Facultad de Derecho','FDD/UNC',1,'2017-05-03 14:33:47','2019-10-17 19:28:01',NULL),(2,'Facultad de Psicologia','Psic',1,'2017-05-03 14:33:47','2019-10-17 19:28:01',NULL),(3,'Facutad de Ciencias Economicas','Cs Ec',1,'2017-05-03 14:34:06','2019-10-17 19:28:01',NULL),(4,'Facultad de Derecho','FDD/US21',2,'2017-05-31 14:25:50','2019-10-17 19:28:01',NULL),(5,'Facultad de Derecho','FDD/UBP',3,'2017-07-16 20:40:04','2019-10-17 19:28:01',NULL),(6,'Facultad de Derecho','FDD/UCC',4,'2017-07-26 16:08:21','2019-10-17 19:28:01',NULL),(7,'Facultad de Ciencias Economicas','FCE/UES21',2,'2017-08-01 01:59:09','2019-10-17 19:28:01',NULL),(11,'Facultad de Ciencias Medicas','FCM - UNC',1,'2018-04-06 14:40:31','2019-10-17 19:28:01',NULL),(18,'Facultad de Ciencias de la Comunicacion','FCC',1,'2018-08-06 20:05:51','2019-10-17 19:28:01',NULL),(19,'Facultad de Ciencias Sociales','FdSC',1,'2018-08-06 20:06:55','2019-10-17 19:28:01',NULL),(20,'Facultad de Arquitectura','Faudi',1,'2018-08-06 20:07:17','2019-10-17 19:28:01',NULL),(21,'Facultad de Ciencias Exactas, Fisicas y Naturales','FCEFyN',1,'2018-08-06 20:08:34','2019-10-17 19:28:01',NULL),(22,'Facultad de Ciencias Agropecuarias','fca',1,'2018-08-06 20:09:13','2019-10-17 19:28:01',NULL),(23,'Facultad de Lenguas','FDL',1,'2018-08-06 20:09:37','2019-10-17 19:28:01',NULL),(24,'Facultad de Ciencias Economicas UCC','FCE',4,'2018-08-06 20:10:11','2019-10-17 19:28:01',NULL),(25,'Facultad de Arquitectura','FAUDI',4,'2018-08-06 20:18:15','2019-10-17 19:28:01',NULL),(26,'Facultad de Ciencias Medicas','FCM',4,'2018-08-06 20:19:10','2019-10-17 19:28:01',NULL),(27,'Facultad de Ciencias Agropecuarias','FCA',4,'2018-08-06 20:19:36','2019-10-17 19:28:01',NULL),(28,'Facultad de Psicologia','FDP',4,'2018-08-06 20:21:01','2019-10-17 19:28:01',NULL),(29,'Facultad de Psicologia','FDP',2,'2018-08-06 20:21:25','2019-10-17 19:28:01',NULL),(30,'facultad de ciencias economicas','FCE',3,'2018-08-06 20:22:24','2019-10-17 19:28:01',NULL),(31,'Facultad de Arquitectura','FdA',3,'2018-08-06 20:22:47','2019-10-17 19:28:01',NULL),(35,'Facultad de Turismo','FDT',3,'2019-03-14 16:00:20','2019-10-17 19:28:01',NULL),(39,'Ciencias Ambientales','CA',2,'2019-05-09 09:54:50','2019-10-17 19:28:01',NULL),(47,'Facultad de Arquitectura, DiseÃ±o y Urbanismo','FADU',1,'2019-07-15 15:45:07','2019-10-17 19:28:01',NULL),(56,'Facultad de Ciencias de la Administracion','FCA - IUA',14,'2019-09-05 16:12:04','2019-10-17 19:28:01',NULL),(70,'Facultad de Matematica, Astronomia, Fisica y Computacion','FAMAF',1,'2019-12-12 16:39:30','2019-12-12 16:39:30',NULL),(74,'Facultad de Ciencias Quimicas','FCQ',1,'2019-12-27 13:08:52','2019-12-27 13:08:52',NULL),(119,'Facultad de Derecho','FDD/IUA',14,'2021-06-08 14:46:23','2021-06-08 14:46:23',NULL),(120,'Facultad de Derecho','FDD/IUA',14,'2021-06-08 14:46:24','2021-06-08 14:46:24',NULL),(122,'Instituto Universitario de Ciencias Biomedicas de Cordoba','IUCBC',42,'2021-07-22 17:13:19','2021-07-22 17:13:19',NULL),(124,'Escuela de Tecnologia Medica','FCM - UNC',1,'2022-02-16 11:26:49','2022-02-16 11:26:49',NULL);
+/*!40000 ALTER TABLE `school` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -202,19 +214,20 @@ UNLOCK TABLES;
 --
 -- Table structure for table `universities`
 --
-
-DROP TABLE IF EXISTS `universities`;
+DROP TABLE IF EXISTS `university`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `universities` (
+CREATE TABLE `university` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
   `short_name` varchar(10) DEFAULT NULL,
-  `country` varchar(50) DEFAULT NULL,
+  `country_id` int DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `country_id` (`country_id`),
+  CONSTRAINT `university_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -222,10 +235,10 @@ CREATE TABLE `universities` (
 -- Dumping data for table `universities`
 --
 
-LOCK TABLES `universities` WRITE;
-/*!40000 ALTER TABLE `universities` DISABLE KEYS */;
-INSERT INTO `universities` VALUES (1,'Universidad Nacional de Cordoba','UNC','AR','2017-05-31 14:24:15','2020-03-30 14:49:36',NULL),(2,'Universidad Siglo XXI','UES21','AR','2017-05-31 14:24:15','2020-03-30 14:49:36',NULL),(3,'Universidad Blas Pascal','UBP','AR','2017-07-16 20:37:08','2020-03-30 14:49:36',NULL),(4,'Universidad Catolica de Cordoba','UCC','AR','2017-07-26 16:06:58','2020-03-30 14:49:36',NULL),(14,'Instituto Universitario AeronÃ¡utico','IUA','AR','2019-09-05 16:09:12','2020-03-30 14:49:36',NULL),(42,'Instituto Universitario de Ciencias BiomÃ©dicas de CÃ³rdoba','IUCBC','AR','2021-07-22 17:10:26','2021-07-26 14:43:25',NULL);
-/*!40000 ALTER TABLE `universities` ENABLE KEYS */;
+LOCK TABLES `university` WRITE;
+/*!40000 ALTER TABLE `university` DISABLE KEYS */;
+INSERT INTO `university` VALUES (1,'Universidad Nacional de Cordoba','UNC',1,'2017-05-31 14:24:15','2020-03-30 14:49:36',NULL),(2,'Universidad Siglo XXI','UES21',1,'2017-05-31 14:24:15','2020-03-30 14:49:36',NULL),(3,'Universidad Blas Pascal','UBP',1,'2017-07-16 20:37:08','2020-03-30 14:49:36',NULL),(4,'Universidad Catolica de Cordoba','UCC',1,'2017-07-26 16:06:58','2020-03-30 14:49:36',NULL),(14,'Instituto Universitario AeronÃ¡utico','IUA',1,'2019-09-05 16:09:12','2020-03-30 14:49:36',NULL),(42,'Instituto Universitario de Ciencias BiomÃ©dicas de CÃ³rdoba','IUCBC',1,'2021-07-22 17:10:26','2021-07-26 14:43:25',NULL);
+/*!40000 ALTER TABLE `university` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
