@@ -1,11 +1,16 @@
 create schema library;
 use library;
  
- create table university (
+create table country (
+		id INT PRIMARY KEY AUTO_INCREMENT,
+	name varchar (50),
+	code varchar (5));
+
+create table university (
 		id int PRIMARY KEY AUTO_INCREMENT,
         name varchar (100),
         short_name varchar (10),
-        country varchar (50),
+        country_id INT,
         created_at datetime,
         updated_at datetime,
         deleted_at datetime);
@@ -72,6 +77,9 @@ create table category (
 		name varchar (50),
         created_at datetime,
         deleted_at datetime);
+
+alter table university
+ADD 	foreign key (country_id) REFERENCES country(id);
 
 alter table school
 ADD	foreign key (university_id) REFERENCES university(id);
