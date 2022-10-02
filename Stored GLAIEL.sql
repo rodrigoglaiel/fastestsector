@@ -50,6 +50,7 @@ DELIMITER //
                         param_updated_at);
  END //
 DELIMITER ;
+
 SET @param_title = 'New file from SP';
 SET @param_description = 'Trying out new SP to generate new files';
 SET @param_category_id = '3' ;
