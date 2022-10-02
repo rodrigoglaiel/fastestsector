@@ -21,29 +21,29 @@ USE library;
 
 GRANT SELECT ON library.career_subject TO 'lector'@'localhost';
 GRANT SELECT ON library.careers TO 'lector'@'localhost';
-GRANT SELECT ON library.categories TO 'lector'@'localhost';
+GRANT SELECT ON library.category TO 'lector'@'localhost';
 GRANT SELECT ON library.files TO 'lector'@'localhost';
 GRANT SELECT ON library.log_new_files TO 'lector'@'localhost';
 GRANT SELECT ON library.log_new_users TO 'lector'@'localhost';
 GRANT SELECT ON library.log_updated_files TO 'lector'@'localhost';
 GRANT SELECT ON library.log_updated_users TO 'lector'@'localhost';
-GRANT SELECT ON library.schools TO 'lector'@'localhost';
+GRANT SELECT ON library.school TO 'lector'@'localhost';
 GRANT SELECT ON library.subjects TO 'lector'@'localhost';
-GRANT SELECT ON library.universities TO 'lector'@'localhost';
+GRANT SELECT ON library.university TO 'lector'@'localhost';
 GRANT SELECT ON library.users TO 'lector'@'localhost';
 
 
 GRANT SELECT, INSERT, UPDATE ON library.career_subject TO 'editor'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON library.careers TO 'editor'@'localhost';
-GRANT SELECT, INSERT, UPDATE ON library.categories TO 'editor'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON library.category TO 'editor'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON library.files TO 'editor'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON library.log_new_files TO 'editor'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON library.log_new_users TO 'editor'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON library.log_updated_users TO 'editor'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON library.log_updated_files TO 'editor'@'localhost';
-GRANT SELECT, INSERT, UPDATE ON library.schools TO 'editor'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON library.school TO 'editor'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON library.subjects TO 'editor'@'localhost';
-GRANT SELECT, INSERT, UPDATE ON library.universities TO 'editor'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON library.university TO 'editor'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON library.users TO 'editor'@'localhost';
 
 SHOW GRANTS FOR 'lector'@'localhost';
