@@ -137,7 +137,7 @@ CREATE TABLE `files` (
   KEY `category_id` (`category_id`),
   KEY `subject_id` (`subject_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `files_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
+  CONSTRAINT `files_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
   CONSTRAINT `files_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`id`),
   CONSTRAINT `files_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=96506 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
