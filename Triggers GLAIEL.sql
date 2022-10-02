@@ -92,15 +92,15 @@ BEFORE UPDATE ON users
 FOR EACH ROW 
 BEGIN 
 INSERT INTO log_updated_users (nombre_accion, nombre_tabla, campo_viejo, campo_nuevo, usuario, fecha_upd_ins_del)
-VALUES ('UPDATE','USERS', OLD.id, NEW.id,CURRENT_USER(),NOW());
+VALUES ('UPDATE','USERS', OLD.career_id, NEW.career_id,CURRENT_USER(),NOW());
 END$$
 DELIMITER ;
 
 SELECT * FROM USERS;
 
 UPDATE users
-SET id = 999999
-WHERE last_name = 'Glaiel';
+SET career_id = 2
+WHERE id = 497988;
 
 SELECT * FROM log_updated_users;
 
@@ -132,6 +132,6 @@ SELECT * FROM FILES;
 
 UPDATE files
 SET title = 'Modificacion 2 titulo documento para trigger'
-WHERE id = 96513;
+WHERE id = 39169;
 
 SELECT * FROM log_updated_files;
